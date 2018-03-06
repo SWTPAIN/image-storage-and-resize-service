@@ -6,16 +6,28 @@ plugins:
   - serverless-webpack
   - serverless-offline
 
+custom:
+  buckets:
+    originalImageBucket: ${env:DOMAIN_NAME}-original-images 
+    resizedImageBucket: ${env:DOMAIN_NAME}-resized-images 
+
 provider:
   name: aws
   runtime: nodejs6.10
   environment:
-    ORIGINAL_IMAGE_BUCKET: kf-original-image-dev
+    ORIGINAL_IMAGE_BUCKET: ${self:custom.buckets.originalImageBucket}
+    RESIZED_IMAGE_BUCKET: ${self:custom.buckets.resizedImageBucket}
 
 functions:
-  hello:
-    handler: handler.hello
+  storeOriginal:
+    handler: handler.storeOriginal
     events:
       - http:
           method: post
-          path: hello
+          path: original-images
+  getResized:
+    handler: handler.getResized
+    events:
+      - http:
+          method: get
+          path: resized-images
