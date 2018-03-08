@@ -4,17 +4,20 @@
   "description": "Serverless webpack example using Typescript",
   "main": "handler.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest --config jestconfig.json"
   },
   "devDependencies": {
     "@types/aws-lambda": "0.0.22",
     "@types/file-type": "^5.2.1",
+    "@types/jest": "^22.2.0",
     "@types/node": "^8.0.57",
     "@types/sharp": "^0.17.6",
     "eslint-plugin-typescript": "^0.9.0",
+    "jest": "^22.4.2",
     "serverless-offline": "^3.18.0",
     "serverless-webpack": "^4.0.0",
     "sharp": "^0.19.1",
+    "ts-jest": "^22.4.1",
     "ts-loader": "^2.3.7",
     "typescript": "^2.7.2",
     "typescript-eslint-parser": "^14.0.0",

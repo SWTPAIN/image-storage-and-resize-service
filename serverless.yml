@@ -10,6 +10,8 @@ custom:
   buckets:
     originalImageBucket: ${env:DOMAIN_NAME}-original-images 
     resizedImageBucket: ${env:DOMAIN_NAME}-resized-images 
+  jest:
+    collectCoverage: true
 
 provider:
   name: aws
@@ -20,13 +22,13 @@ provider:
 
 functions:
   storeOriginal:
-    handler: handler.storeOriginal
+    handler: src/handler.storeOriginal
     events:
       - http:
           method: post
           path: original-images
   getResized:
-    handler: handler.getResized
+    handler: src/handler.getResized
     events:
       - http:
           method: get
